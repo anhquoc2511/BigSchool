@@ -25,7 +25,7 @@ namespace BigSchool.ViewModels
         public DateTime GetDateTime()
         {
             string dateTimeString = string.Format("{0} {1}", Date, Time);
-            return DateTime.ParseExact(dateTimeString, "dd/MM/yyyy H:mm", CultureInfo.InvariantCulture);
+            return DateTime.ParseExact(dateTimeString, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
 
         }
     }
