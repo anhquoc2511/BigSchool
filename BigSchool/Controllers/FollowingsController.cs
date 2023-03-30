@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace BigSchool.Controllers
 {
     public class FollowingsController : ApiController
@@ -17,6 +18,7 @@ namespace BigSchool.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+
         [HttpPost]
         public IHttpActionResult Follow (FollowingDto followingDto)
         {
@@ -31,6 +33,7 @@ namespace BigSchool.Controllers
 
             _dbContext.Followings.Add(following);
             _dbContext.SaveChanges();
+
             return Ok();
         }
     }

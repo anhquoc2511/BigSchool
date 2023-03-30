@@ -2,16 +2,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<div class="row">
-    <ul>
-        @foreach (var course in   Model.UpcommingCourses)
-            {
-                <li>
-                    @course.DateTime - @course.Lecturer.Name
-                </li>
-            }
-    </ul>
-</div>
+
 
 <ul class="course">
     @foreach (var course in Model.UpcommingCourses)
@@ -30,7 +21,7 @@
                     @course.Lecturer.Name
                     @if (Model.ShowAction)
                     {
-                        <button class="btn btn-default btn-sm js-toogle-follow" data-user-id="@course.LecturerId">Follow</button>
+                        <button class="btn btn-default btn-sm js-toggle-follow" data-user-id="@course.LecturerId">Follow</button>
                     }
 
                 </span>
@@ -39,7 +30,7 @@
                 </span>
                 @if (Model.ShowAction)
                 {
-                    <button data-course-id="@course.Id" class="btn btn-default btn -sm js-toogle-attendence">Going?</button>
+                    <button data-course-id="@course.Id" class="btn btn-default btn-sm js-toggle-attendance">Going?</button>
                 }
 
             </div>
@@ -49,13 +40,13 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-            $(".js-toggle-attendence").click(function (e) {
+            $(".js-toggle-attendance").click(function (e) {
                 var button = $(e.target);
-                $.post("/api/attendencse", { courseId: button.attr("data-course-id") })
+                $.post("/api/attendances", { courseId: button.attr("data-course-id") })
                     .done(function () {
                         button
                             .removeClass("btn-default")
-                            .addClass("btn-Info")
+                            .addClass("btn-info")
                             .text("Going");
                     })
                     .fail(function () {
@@ -63,7 +54,7 @@
                     });
             });
 
-            $(".js-toggle-atttendance").click(function (e) {
+            $(".js-toggle-follow").click(function (e) {
                 var button = $(e.targer);
                 $.post("/api/followings", { followeeId: button.attr("date-user-id") })
                     .done(function () {
@@ -77,7 +68,7 @@
     </script>    
 }
 
-<main>
+@*@<main>
     <section class="row" aria-labelledby="aspnetTitle">
         <h1 id="title">ASP.NET</h1>
         <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
@@ -105,4 +96,4 @@
             <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
         </section>
     </div>
-</main>
+</main>*@

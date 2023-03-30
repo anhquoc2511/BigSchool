@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
+
 namespace BigSchool.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -12,7 +13,7 @@ namespace BigSchool.Models
         public DbSet<Course> Courses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
-        public DbSet<Following> Followings { get; set; }
+        public DbSet<Following> Following { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
